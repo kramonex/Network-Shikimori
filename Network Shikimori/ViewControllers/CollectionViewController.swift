@@ -7,42 +7,56 @@
 
 import UIKit
 
-class CollectionViewController: UICollectionViewController {
+final class CollectionViewController: UICollectionViewController {
+    
+    private var animes: [Anime] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        fetchAnime()
         
     }
     // MARK: UICollectionViewDataSource
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+        animes.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "animeCard", for: indexPath)
-    
-        // Configure the cell
-    
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "animeCell", for: indexPath)
+        guard let cell = cell as? CollectionViewCell else { return UICollectionViewCell() }
+        let anime = animes[indexPath.row]
+        cell.configure(with: anime)
         return cell
     }
 
 
 }
 
+
+extension CollectionViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        CGSize(width: UIScreen.main.bounds.width - 24, height: 226)
+    }
+}
+
+
 extension CollectionViewController {
     private func fetchAnime() {
-        URLSession.shared.dataTask(with: Link.mostPopular.url)
-        { data, _, error in
+        URLSession.shared.dataTask(with: Link.mostPopular.url) { [weak self] data, _, error in
             guard let data else {
                 print(error?.localizedDescription ?? "No error description")
                 return
             }
-            
             do {
                 let decoder = JSONDecoder()
-                let animes = try decoder.decode([Anime].self, from: data)
-                print(animes)
+                self?.animes = try decoder.decode([Anime].self, from: data)
+                DispatchQueue.main.async {
+                    self?.collectionView.reloadData()
+                }
             } catch {
                 print(error)
             }

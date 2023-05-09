@@ -16,5 +16,5 @@ struct Anime: Decodable {
 }
 
 struct AnimeImage: Decodable {
-    let preview: String
+    let preview: URL
 }
