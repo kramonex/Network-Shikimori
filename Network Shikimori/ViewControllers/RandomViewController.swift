@@ -8,6 +8,8 @@
 import UIKit
 
 final class RandomViewController: UITableViewController {
+    
+    private var randomAnime: [Anime] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,25 +23,19 @@ final class RandomViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        randomAnime.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "animeRandomCell", for: indexPath)
+        guard let cell = cell as? TableViewCell else { return UITableViewCell() }
+        let anime = randomAnime[indexPath.row]
+        cell.configure(with: anime)
         return cell
     }
-    */
+    
 
 
 }
