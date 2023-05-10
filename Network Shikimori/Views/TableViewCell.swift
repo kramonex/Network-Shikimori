@@ -8,13 +8,14 @@
 import UIKit
 
 final class TableViewCell: UITableViewCell {
-
+    
     @IBOutlet var animeImage: UIImageView!
     @IBOutlet var animeName: UILabel!
     @IBOutlet var animeType: UILabel!
     @IBOutlet var animeStatus: UILabel!
     @IBOutlet var animeScore: UILabel!
     
+    private let networkManager = NetworkManager.shared
     
     func configure(with anime: Anime) {
         animeName.text = anime.russian
@@ -25,10 +26,12 @@ final class TableViewCell: UITableViewCell {
         
         guard let imageUrl = URL(string: "https://shikimori.me/" + "\(anime.image.preview)") else { return }
         
-        DispatchQueue.global().async { [weak self] in
-            guard let imageData = try? Data(contentsOf: imageUrl ) else { return }
-            DispatchQueue.main.async {
+        networkManager.fetchImage(from: imageUrl) { [weak self] result in
+            switch result {
+            case .success(let imageData):
                 self?.animeImage.image = UIImage(data: imageData)
+            case .failure(let error):
+                print(error)
             }
         }
     }

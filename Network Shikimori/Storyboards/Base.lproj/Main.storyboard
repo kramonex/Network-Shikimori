@@ -151,7 +151,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="226"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lcW-Fr-lv6">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lcW-Fr-lv6">
                                             <rect key="frame" x="0.0" y="0.0" width="160" height="226"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="226" id="c1I-ro-I81"/>
@@ -174,7 +174,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MHp-FW-ktg">
-                                            <rect key="frame" x="168" y="165" width="42" height="21"/>
+                                            <rect key="frame" x="168" y="165" width="225" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -195,6 +195,8 @@
                                         <constraint firstItem="MHp-FW-ktg" firstAttribute="top" secondItem="r5O-ze-cdP" secondAttribute="top" constant="165" id="Pf7-93-wfk"/>
                                         <constraint firstItem="lcW-Fr-lv6" firstAttribute="leading" secondItem="r5O-ze-cdP" secondAttribute="leading" id="ROi-pj-yu3"/>
                                         <constraint firstItem="MHp-FW-ktg" firstAttribute="leading" secondItem="lcW-Fr-lv6" secondAttribute="trailing" constant="8" symbolic="YES" id="USL-1Q-WcK"/>
+                                        <constraint firstAttribute="trailing" secondItem="MHp-FW-ktg" secondAttribute="trailing" id="Vg8-ga-qa4"/>
+                                        <constraint firstItem="cQX-rJ-StS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="qTU-Sc-xCe" secondAttribute="trailing" constant="10" id="Wfo-oK-S5o"/>
                                         <constraint firstItem="rh7-2a-62J" firstAttribute="leading" secondItem="lcW-Fr-lv6" secondAttribute="trailing" constant="8" symbolic="YES" id="bTn-MU-xpx"/>
                                         <constraint firstAttribute="bottom" secondItem="cQX-rJ-StS" secondAttribute="bottom" constant="4" id="dbT-Dk-pk8"/>
                                         <constraint firstAttribute="bottom" secondItem="qTU-Sc-xCe" secondAttribute="bottom" constant="11" id="e19-GM-AZC"/>

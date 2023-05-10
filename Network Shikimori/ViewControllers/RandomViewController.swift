@@ -17,15 +17,16 @@ final class RandomViewController: UITableViewController {
         fetchRandomAnime()
     }
     
-    // MARK: - Table view data source
+    @IBAction func refreshAnimeDidTap() {
+        fetchRandomAnime()
+    }
+    
+// MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         randomAnime.count
     }
     
-    @IBAction func refreshAnimeDidTap() {
-        fetchRandomAnime()
-    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "animeRandomCell", for: indexPath)
@@ -37,7 +38,8 @@ final class RandomViewController: UITableViewController {
 }
 
 
-    
+//MARK: - RandomViewController
+
 extension RandomViewController {
     private func fetchRandomAnime() {
         URLSession.shared.dataTask(with: Link.threeRandomAnime.url) { [weak self] data, _, error in

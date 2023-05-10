@@ -17,7 +17,8 @@ final class CollectionViewController: UICollectionViewController {
         fetchAnime()
         
     }
-    // MARK: UICollectionViewDataSource
+    
+// MARK: UICollectionViewDataSource
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         animes.count
@@ -34,6 +35,7 @@ final class CollectionViewController: UICollectionViewController {
 
 }
 
+// MARK: CollectionViewController
 
 extension CollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
@@ -41,10 +43,8 @@ extension CollectionViewController: UICollectionViewDelegateFlowLayout {
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         CGSize(width: UIScreen.main.bounds.width - 24, height: 226)
     }
-}
 
 
-extension CollectionViewController {
     private func fetchAnime() {
         URLSession.shared.dataTask(with: Link.mostPopular.url) { [weak self] data, _, error in
             guard let data else {

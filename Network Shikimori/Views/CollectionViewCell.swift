@@ -16,6 +16,7 @@ final class CollectionViewCell: UICollectionViewCell {
     @IBOutlet var status: UILabel!
     @IBOutlet var score: UILabel!
     
+    private let networkManager = NetworkManager.shared
     
     func configure(with anime: Anime) {
         name.text = anime.russian
@@ -26,12 +27,15 @@ final class CollectionViewCell: UICollectionViewCell {
         
         guard let imageUrl = URL(string: "https://shikimori.me/" + "\(anime.image.preview)") else { return }
         
-        DispatchQueue.global().async { [weak self] in
-            guard let imageData = try? Data(contentsOf: imageUrl ) else { return }
-            DispatchQueue.main.async {
+        networkManager.fetchImage(from: imageUrl) { [weak self] result in
+            switch result {
+            case .success(let imageData):
                 self?.image.image = UIImage(data: imageData)
+            case .failure(let error):
+                print(error)
             }
         }
     }
 }
+
 
