@@ -10,16 +10,16 @@ import Foundation
 
 enum Link {
     case mostPopular
-    case threeRandomAnimeScoreOverSeven
+    case threeRandomAnime
     
     var url: URL {
         switch self {
         case .mostPopular:
             return URL(string:
-                "https://shikimori.me/api/animes?season=spring_2023&order=popularity&limit=50")!
-        case .threeRandomAnimeScoreOverSeven:
+                "https://shikimori.me/api/animes?season=spring_2023&status=ongoing&order=popularity&limit=50")!
+        case .threeRandomAnime:
             return URL(string:
-                "https://shikimori.me/api/animes?kind=tv&order=random&limit=3&score=7")!
+                "https://shikimori.me/api/animes?kind=tv&order=random&limit=3&score=6&season=2000_2022")!
         }
     }
 }

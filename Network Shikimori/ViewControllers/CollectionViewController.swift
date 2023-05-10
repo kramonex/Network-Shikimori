@@ -62,24 +62,6 @@ extension CollectionViewController {
             }
         }.resume()
     }
-    
-    private func fetchRandomAnime(){
-        URLSession.shared.dataTask(with: Link.threeRandomAnimeScoreOverSeven.url)
-        { data, _, error in
-            guard let data else {
-                print(error?.localizedDescription ?? "No error description")
-                return
-            }
-            
-            do {
-                let decoder = JSONDecoder()
-                let animesRandom = try decoder.decode([Anime].self, from: data)
-                print(animesRandom)
-            } catch {
-                print(error)
-            }
-        }.resume()
-    }
 }
 
 

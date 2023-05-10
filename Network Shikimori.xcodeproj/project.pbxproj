@@ -69,7 +69,7 @@
 				6D11E62A2A0A957A0074A073 /* App */,
 				6D11E6312A0A96DD0074A073 /* ViewControllers */,
 				6D11E6322A0A97010074A073 /* Views */,
-				6D11E62E2A0A96240074A073 /* Sourses */,
+				6D11E62E2A0A96240074A073 /* Services */,
 				6D11E62B2A0A95DA0074A073 /* Models */,
 				6D11E6292A0A955A0074A073 /* Storyboards */,
 				6D11E6182A0A77760074A073 /* Assets.xcassets */,
@@ -104,12 +104,12 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		6D11E62E2A0A96240074A073 /* Sourses */ = {
+		6D11E62E2A0A96240074A073 /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				6D11E62F2A0A96570074A073 /* NetworkManager.swift */,
 			);
-			path = Sourses;
+			path = Services;
 			sourceTree = "<group>";
 		};
 		6D11E6312A0A96DD0074A073 /* ViewControllers */ = {

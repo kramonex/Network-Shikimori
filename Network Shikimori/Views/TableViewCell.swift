@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TableViewCell: UITableViewCell {
+final class TableViewCell: UITableViewCell {
 
     @IBOutlet var animeImage: UIImageView!
     @IBOutlet var animeName: UILabel!
